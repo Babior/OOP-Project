@@ -16,8 +16,11 @@ public class FillInTheBlankQuestion extends Question{
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        // TODO: Trim + lowercase both and compare
-        // For now, always return false so it compiles.
-        return false;
-    }
+        if  (userAnswer == null | correctAnswer == null) {
+            return false;
+        }
+            String user_answer = userAnswer.trim().toLowerCase();
+            String correct_answer = correctAnswer.trim().toLowerCase();
+            return userAnswer.equals(correct_answer);
+        }
 }
