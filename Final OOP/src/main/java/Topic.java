@@ -1,0 +1,7 @@
+public enum Topic {
+    GHANA_IMPACTS,
+    GHANA_POLICY,
+    GHANA_ENERGY,
+    AFRICA_REGIONAL,
+    GLOBAL_BASICS
+}
