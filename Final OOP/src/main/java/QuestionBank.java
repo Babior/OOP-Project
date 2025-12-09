@@ -53,7 +53,7 @@ public class QuestionBank {
 
     public void loadDefaultQuestionsGhanaFocused() {
        
-        {//mcp
+        {//mcq
             List<String> o = new ArrayList<>();
             o.add("12%");
             o.add("5%");
