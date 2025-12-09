@@ -48,7 +48,7 @@ public class ClimateQuizGUI extends JFrame {
     private JRadioButton falseButton;
     
     public ClimateQuizGUI() {
-        super("🌍 Climate Change Quiz - Ghana Focus");
+        super("Climate Change Quiz - Ghana Focus");
         initializeComponents();
         setupUI();
         showWelcomeScreen();
@@ -97,7 +97,7 @@ public class ClimateQuizGUI extends JFrame {
         headerPanel.setBackground(PRIMARY_COLOR);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(40, 0, 40, 0));
         
-        JLabel titleLabel = new JLabel("🌍 CLIMATE CHANGE QUIZ", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("CLIMATE CHANGE QUIZ", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 36));
         titleLabel.setForeground(Color.WHITE);
         
@@ -132,7 +132,7 @@ public class ClimateQuizGUI extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
         
-        JButton startButton = createStyledButton("🚀 Start Quiz", PRIMARY_COLOR);
+        JButton startButton = createStyledButton("Start Quiz", PRIMARY_COLOR);
         startButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
         startButton.setPreferredSize(new Dimension(200, 50));
         startButton.addActionListener(e -> startQuiz());
@@ -150,13 +150,13 @@ public class ClimateQuizGUI extends JFrame {
         JPanel instructionCard = createCardPanel();
         instructionCard.setLayout(new BorderLayout());
         
-        JLabel instructionTitle = new JLabel("📋 Instructions", SwingConstants.CENTER);
+        JLabel instructionTitle = new JLabel("Instructions", SwingConstants.CENTER);
         instructionTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
         instructionTitle.setForeground(PRIMARY_COLOR);
         instructionTitle.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         
         JTextArea instructions = new JTextArea(
-            "• Answer 10 questions on climate change in Ghana\n" +
+            "• Answer 15 questions on climate change in Ghana\n" +
             "• Difficulty adapts based on your performance\n" +
             "• Multiple Choice: Select from A, B, C, or D\n" +
             "• True/False: Choose True or False\n" +
@@ -183,7 +183,7 @@ public class ClimateQuizGUI extends JFrame {
         // Footer
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         footerPanel.setOpaque(false);
-        JLabel footerLabel = new JLabel("🌱 Learn • Adapt • Protect", SwingConstants.CENTER);
+        JLabel footerLabel = new JLabel("Learn • Adapt • Protect", SwingConstants.CENTER);
         footerLabel.setFont(new Font("Segoe UI", Font.ITALIC, 14));
         footerLabel.setForeground(new Color(100, 100, 100));
         footerPanel.add(footerLabel);
@@ -203,7 +203,7 @@ public class ClimateQuizGUI extends JFrame {
         topPanel.setLayout(new GridLayout(1, 5, 10, 10));
         
         // Progress bar
-        progressBar = new JProgressBar(0, 10);
+        progressBar = new JProgressBar(0, 15);
         progressBar.setValue(0);
         progressBar.setStringPainted(true);
         progressBar.setForeground(SECONDARY_COLOR);
@@ -211,12 +211,12 @@ public class ClimateQuizGUI extends JFrame {
         progressBar.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         
         // Info labels
-        questionNumberLabel = createInfoLabel("Question: 1/10");
+        questionNumberLabel = createInfoLabel("Question: 1/15");
         difficultyLabel = createInfoLabel("Difficulty: EASY");
         scoreLabel = createInfoLabel("Score: 0%");
         
         // Quit button
-        JButton quitButton = createStyledButton("🚪 Quit", ACCENT_COLOR);
+        JButton quitButton = createStyledButton("Quit", ACCENT_COLOR);
         quitButton.addActionListener(e -> returnToWelcome());
         
         topPanel.add(progressBar);
@@ -233,7 +233,7 @@ public class ClimateQuizGUI extends JFrame {
         JPanel questionHeader = new JPanel(new BorderLayout());
         questionHeader.setOpaque(false);
         
-        JLabel questionTag = new JLabel("❓ QUESTION");
+        JLabel questionTag = new JLabel("QUESTION");
         questionTag.setFont(new Font("Segoe UI", Font.BOLD, 16));
         questionTag.setForeground(PRIMARY_COLOR);
         questionTag.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
@@ -263,7 +263,7 @@ public class ClimateQuizGUI extends JFrame {
             BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
         
-        submitButton = createStyledButton("📤 Submit Answer", PRIMARY_COLOR);
+        submitButton = createStyledButton("Submit Answer", PRIMARY_COLOR);
         submitButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
         submitButton.addActionListener(e -> submitAnswer());
         
@@ -296,7 +296,7 @@ public class ClimateQuizGUI extends JFrame {
         JPanel explanationPanel = createCardPanel();
         explanationPanel.setLayout(new BorderLayout());
         
-        JLabel explanationTitle = new JLabel("💡 Explanation", SwingConstants.CENTER);
+        JLabel explanationTitle = new JLabel("Explanation", SwingConstants.CENTER);
         explanationTitle.setFont(new Font("Segoe UI", Font.BOLD, 16));
         explanationTitle.setForeground(PRIMARY_COLOR);
         explanationTitle.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -336,7 +336,7 @@ public class ClimateQuizGUI extends JFrame {
         headerPanel.setBackground(PRIMARY_COLOR);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(40, 0, 40, 0));
         
-        JLabel resultsTitle = new JLabel("🏆 QUIZ RESULTS", SwingConstants.CENTER);
+        JLabel resultsTitle = new JLabel("QUIZ RESULTS", SwingConstants.CENTER);
         resultsTitle.setFont(new Font("Segoe UI", Font.BOLD, 36));
         resultsTitle.setForeground(Color.WHITE);
         
@@ -369,12 +369,12 @@ public class ClimateQuizGUI extends JFrame {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setOpaque(false);
         
-        restartButton = createStyledButton("🔄 Take Another Quiz", PRIMARY_COLOR);
+        restartButton = createStyledButton("Take Another Quiz", PRIMARY_COLOR);
         restartButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
         restartButton.setPreferredSize(new Dimension(250, 60));
         restartButton.addActionListener(e -> returnToWelcome());
         
-        JButton exitButton = createStyledButton("🚪 Exit", ACCENT_COLOR);
+        JButton exitButton = createStyledButton("Exit", ACCENT_COLOR);
         exitButton.setFont(new Font("Segoe UI", Font.BOLD, 18));
         exitButton.setPreferredSize(new Dimension(150, 60));
         exitButton.addActionListener(e -> System.exit(0));
@@ -461,7 +461,12 @@ public class ClimateQuizGUI extends JFrame {
         QuestionBank questionBank = new QuestionBank();
         questionBank.loadDefaultQuestionsGhanaFocused();
         
-        quizSession = new QuizSession(currentUser, questionBank, 10);
+        // Use 15 questions (you can change this number)
+        int totalQuestions = 15;
+        quizSession = new QuizSession(currentUser, questionBank, totalQuestions);
+        
+        // Update progress bar maximum
+        progressBar.setMaximum(totalQuestions);
         
         // Show quiz screen
         cardLayout.show(mainPanel, "QUIZ");
@@ -543,7 +548,7 @@ public class ClimateQuizGUI extends JFrame {
         }
         
         // Add submit button for MCQs
-        JButton mcqSubmit = createStyledButton("📤 Submit Answer", PRIMARY_COLOR);
+        JButton mcqSubmit = createStyledButton("Submit Answer", PRIMARY_COLOR);
         mcqSubmit.setFont(new Font("Segoe UI", Font.BOLD, 16));
         mcqSubmit.addActionListener(e -> {
             String selected = group.getSelection() != null ? group.getSelection().getActionCommand() : "";
@@ -571,11 +576,11 @@ public class ClimateQuizGUI extends JFrame {
         JPanel tfPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
         tfPanel.setOpaque(false);
         
-        trueButton = new JRadioButton("<html><b>✓ TRUE</b></html>");
+        trueButton = new JRadioButton("<html><b>TRUE</b></html>");
         styleTrueFalseButton(trueButton, CORRECT_COLOR);
         trueButton.setActionCommand("T");
         
-        falseButton = new JRadioButton("<html><b>✗ FALSE</b></html>");
+        falseButton = new JRadioButton("<html><b>FALSE</b></html>");
         styleTrueFalseButton(falseButton, ACCENT_COLOR);
         falseButton.setActionCommand("F");
         
@@ -588,7 +593,7 @@ public class ClimateQuizGUI extends JFrame {
         optionsPanel.add(tfPanel);
         
         // Add submit button
-        JButton tfSubmit = createStyledButton("📤 Submit Answer", PRIMARY_COLOR);
+        JButton tfSubmit = createStyledButton("Submit Answer", PRIMARY_COLOR);
         tfSubmit.setFont(new Font("Segoe UI", Font.BOLD, 16));
         tfSubmit.addActionListener(e -> {
             String selected = trueFalseGroup.getSelection() != null ? 
@@ -693,11 +698,11 @@ public class ClimateQuizGUI extends JFrame {
         // Show feedback with animation
         Question currentQ = quizSession.getCurrentQuestion();
         if (correct) {
-            feedbackLabel.setText("✅ CORRECT!");
+            feedbackLabel.setText("CORRECT!");
             feedbackLabel.setForeground(CORRECT_COLOR);
             feedbackPanelAnimation(CORRECT_COLOR);
         } else {
-            feedbackLabel.setText("❌ INCORRECT");
+            feedbackLabel.setText("INCORRECT");
             feedbackLabel.setForeground(ACCENT_COLOR);
             feedbackPanelAnimation(ACCENT_COLOR);
         }
@@ -757,7 +762,7 @@ public class ClimateQuizGUI extends JFrame {
         String summary = quizSession.getSummaryReport();
         
         // Format results nicely
-        String formattedResults = "🎯 YOUR QUIZ RESULTS\n\n" +
+        String formattedResults = "YOUR QUIZ RESULTS\n\n" +
                                  "================================\n" +
                                  summary.replace("\n", "\n") +
                                  "\n================================\n\n" +
@@ -771,13 +776,13 @@ public class ClimateQuizGUI extends JFrame {
     
     private String getPerformanceMessage(double accuracy) {
         if (accuracy >= 90) {
-            return "🌟 EXCELLENT! You're a climate change expert!";
+            return "EXCELLENT! You're a climate change expert!";
         } else if (accuracy >= 75) {
-            return "👍 GREAT JOB! You have strong climate knowledge!";
+            return "GREAT JOB! You have strong climate knowledge!";
         } else if (accuracy >= 60) {
-            return "📚 GOOD EFFORT! Keep learning about climate change!";
+            return "GOOD EFFORT! Keep learning about climate change!";
         } else {
-            return "🌱 KEEP LEARNING! Every bit of knowledge helps protect our planet!";
+            return "KEEP LEARNING! Every bit of knowledge helps protect our planet!";
         }
     }
     
