@@ -52,7 +52,7 @@ public class QuestionBank {
     }
 
     public void loadDefaultQuestionsGhanaFocused() {
-        // TODO: Keoni's job:
+        // TODO: ':
         // create MultipleChoiceQuestion / TrueFalseQuestion / FillInTheBlankQuestion
         // objects and add them here with addQuestion(...)
     }
