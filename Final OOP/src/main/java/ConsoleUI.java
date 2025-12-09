@@ -28,27 +28,26 @@ public class ConsoleUI {
             boolean correct = quizSession.submitAnswer(userAnswer);
 
             if (correct) {
-                System.out.println("✅ Correct!");
+                System.out.println(" Correct!");
             } else {
-                System.out.println("❌ Incorrect.");
+                System.out.println(" Incorrect.");
             }
 
             System.out.println("Explanation: " + question.getExplanation());
-            System.out.println("----------------------------------------");
         }
 
         showSummary();
     }
 
     private void showWelcome() {
-        System.out.println("=== Welcome to the Climate Change Quiz ===");
+        System.out.println(" Welcome to the Climate Change Quiz!!! ");
         System.out.println("Answer the questions to test your knowledge.");
         System.out.println();
     }
 
     private void showSummary() {
         System.out.println();
-        System.out.println("=== Quiz Finished ===");
+        System.out.println(" Quiz Finished ");
         System.out.println(quizSession.getSummaryReport());
     }
 
