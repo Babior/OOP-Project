@@ -14,7 +14,7 @@ public class Main {
         QuestionBank questionBank = new QuestionBank();
         questionBank.loadDefaultQuestionsGhanaFocused(); // later
 
-        int numQuestionsToAsk = 10; // you can change this
+        int numQuestionsToAsk = 10; 
 
         QuizSession quizSession = new QuizSession(user, questionBank, numQuestionsToAsk);
 
