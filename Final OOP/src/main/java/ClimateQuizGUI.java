@@ -75,7 +75,7 @@ public class ClimateQuizGUI extends JFrame {
     }
     
     private void setupUI() {
-        // Set custom look and feel
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class ClimateQuizGUI extends JFrame {
         welcomePanel = new JPanel(new BorderLayout(30, 30));
         welcomePanel.setBackground(BACKGROUND_COLOR);
         
-        // Header with gradient effect simulation
+        // Header
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(PRIMARY_COLOR);
         headerPanel.setBorder(BorderFactory.createEmptyBorder(40, 0, 40, 0));
@@ -225,7 +225,7 @@ public class ClimateQuizGUI extends JFrame {
         JPanel questionArea = createCardPanel();
         questionArea.setLayout(new BorderLayout(20, 20));
         
-        // Question label with nice styling
+        // Question label
         JPanel questionHeader = new JPanel(new BorderLayout());
         questionHeader.setOpaque(false);
         
