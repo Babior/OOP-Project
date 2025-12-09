@@ -22,29 +22,15 @@ public class MultipleChoiceQuestion extends Question {
     @Override
     public boolean checkAnswer(String userAnswer) {
         // TODO: Convert userAnswer (A/B/C/D or 1/2/3/4) to index and compare
+        int index = 0;
         if (userAnswer == null | userAnswer.isEmpty()) {
             return false;
+            char letter = Character.toUpperCase(userAnswer.charAt(0));
+            index = letter - 'A';
         }
-        int index;
-        String answer = userAnswer.toUpperCase();
-
-        switch (answer) {
-            case "A":
-                index = 0;
-                break;
-            case "B":
-                index = 1;
-                break;
-            case "C":
-                index = 2;
-                break;
-
-            case "D":
-                index = 3;
-                break;
-            default:
-                return false;
+        if (index < 0 || index > 3) {
+            return false;
         }
-        return false;
-    }
+        return index == correctOptionIndex;
+        }
     }
