@@ -21,8 +21,7 @@ public class MultipleChoiceQuestion extends Question {
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        // TODO: Convert userAnswer (A/B/C/D or 1/2/3/4) to index and compare
-        if (userAnswer == null | userAnswer.isEmpty()) {
+        if (userAnswer == null || userAnswer.isEmpty()) {
             return false;
         }
         int index;
@@ -38,13 +37,12 @@ public class MultipleChoiceQuestion extends Question {
             case "C":
                 index = 2;
                 break;
-
             case "D":
                 index = 3;
                 break;
             default:
                 return false;
         }
-        return false;}
-
+        return index == correctOptionIndex;  // FIXED: Compare index with correctOptionIndex
+    }
 }
