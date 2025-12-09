@@ -43,6 +43,6 @@ public class MultipleChoiceQuestion extends Question {
             default:
                 return false;
         }
-        return index == correctOptionIndex;  // FIXED: Compare index with correctOptionIndex
+        return index == correctOptionIndex;  
     }
 }
