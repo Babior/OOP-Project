@@ -21,13 +21,28 @@ public class MultipleChoiceQuestion extends Question {
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        // Convert userAnswer (A/B/C/D) to index and compare
-        String cleanAnswer = userAnswer.trim().toUpperCase();
-        
-        if (cleanAnswer.length() == 1 && cleanAnswer.charAt(0) >= 'A' && cleanAnswer.charAt(0) <= 'D') {
-            int userIndex = cleanAnswer.charAt(0) - 'A';
-            return userIndex == correctOptionIndex;
+        if (userAnswer == null || userAnswer.isEmpty()) {
+            return false;
         }
-        return false; // Invalid input
+        int index;
+        String answer = userAnswer.toUpperCase();
+
+        switch (answer) {
+            case "A":
+                index = 0;
+                break;
+            case "B":
+                index = 1;
+                break;
+            case "C":
+                index = 2;
+                break;
+            case "D":
+                index = 3;
+                break;
+            default:
+                return false;
+        }
+        return index == correctOptionIndex;  // FIXED: Compare index with correctOptionIndex
     }
 }
