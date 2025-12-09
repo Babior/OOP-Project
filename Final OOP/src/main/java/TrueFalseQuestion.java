@@ -12,8 +12,20 @@ public class TrueFalseQuestion extends Question {
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        // TODO: Accept T/F or True/False (case-insensitive) and compare
-        // For now, always return false so it compiles.
-        return false;
+        if (userAnswer == null) {
+            return false;
+        }
+        // This is a variable to store the value of users input
+        boolean BooleanUser;
+        userAnswer = userAnswer.toLowerCase();
+        if (userAnswer.equals("t") || userAnswer.equals("true")) {
+            BooleanUser = true;
+        } else if (userAnswer.equals("f") || userAnswer.equals("false")) {
+            BooleanUser = false;
+        } else {
+            BooleanUser = false;
+        }
+
+        return BooleanUser == correctAnswer;
     }
-}
+    }
