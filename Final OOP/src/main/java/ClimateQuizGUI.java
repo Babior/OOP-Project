@@ -153,9 +153,10 @@ public class ClimateQuizGUI extends JFrame {
         JTextArea instructions = new JTextArea(
             "• Answer 15 questions on climate change in Ghana\n" +
             "• Difficulty adapts based on your performance\n" +
-            "• Multiple Choice: Select from A, B, C, or D\n" +
+            "• Multiple Choice: Enter A, B, C, or D\n" +
             "• True/False: Enter T or F (or True/False)\n" +
-            "• Fill in Blank: Type your answer\n" +
+            "• Fill in Blank: Type your full answer\n" +
+            "• All answers go in the text box below\n" +
             "• Get detailed explanations after each question\n" +
             "• Track your progress with the progress bar\n" +
             "• Aim for high accuracy to reach higher difficulty levels!"
@@ -240,13 +241,13 @@ public class ClimateQuizGUI extends JFrame {
         questionHeader.add(questionTag, BorderLayout.NORTH);
         questionHeader.add(questionLabel, BorderLayout.CENTER);
         
-        // Options panel
+        // Options panel (now shows question-specific instructions)
         optionsPanel = new JPanel();
         optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
         optionsPanel.setOpaque(false);
         optionsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
-        // Input area (for fill-in and true/false questions)
+        // Input area (for ALL question types)
         JPanel inputPanel = new JPanel(new BorderLayout(10, 10));
         inputPanel.setOpaque(false);
         inputPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -495,7 +496,7 @@ public class ClimateQuizGUI extends JFrame {
         feedbackLabel.setText("");
         explanationArea.setText("");
         
-        // Show appropriate input based on question type
+        // Show appropriate instructions based on question type
         if (question instanceof MultipleChoiceQuestion) {
             showMultipleChoice((MultipleChoiceQuestion) question);
         } else if (question instanceof TrueFalseQuestion) {
@@ -511,52 +512,53 @@ public class ClimateQuizGUI extends JFrame {
         optionsPanel.revalidate();
         optionsPanel.repaint();
         
-        if (answerField.isVisible()) {
-            answerField.requestFocus();
-        }
+        // Always focus on the answer field
+        answerField.requestFocus();
     }
     
     private void showMultipleChoice(MultipleChoiceQuestion mcq) {
-        answerField.setVisible(false);
-        submitButton.setVisible(false);
+        answerField.setVisible(true);
+        submitButton.setVisible(true);
+        answerField.setText("");
+        answerField.setToolTipText("Enter A, B, C, or D");
         
+        // Clear options panel and show instructions
+        optionsPanel.removeAll();
+        
+        // Show question type
+        JLabel typeLabel = new JLabel("MULTIPLE CHOICE QUESTION");
+        typeLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        typeLabel.setForeground(PRIMARY_COLOR);
+        optionsPanel.add(typeLabel);
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Show instructions
+        JLabel instructionLabel = new JLabel("Type the letter of your answer (A, B, C, or D) in the text box below:");
+        instructionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        instructionLabel.setForeground(new Color(100, 100, 100));
+        optionsPanel.add(instructionLabel);
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        // Show the options
         List<String> options = mcq.getOptions();
-        ButtonGroup group = new ButtonGroup();
-        
         char optionLetter = 'A';
         for (String option : options) {
-            JRadioButton radioButton = new JRadioButton("<html><b>" + optionLetter + ")</b> " + option + "</html>");
-            radioButton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            radioButton.setActionCommand(String.valueOf(optionLetter));
-            radioButton.setOpaque(false);
-            radioButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            
-            // Style the radio button
-            radioButton.setIcon(new ImageIcon(createCircleIcon(false)));
-            radioButton.setSelectedIcon(new ImageIcon(createCircleIcon(true)));
-            
-            group.add(radioButton);
-            optionsPanel.add(radioButton);
-            optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-            
+            JLabel optionLabel = new JLabel(optionLetter + ") " + option);
+            optionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            optionLabel.setForeground(TEXT_COLOR);
+            optionsPanel.add(optionLabel);
+            optionsPanel.add(Box.createRigidArea(new Dimension(0, 5)));
             optionLetter++;
         }
         
-        // Add submit button for MCQs
-        JButton mcqSubmit = createStyledButton("Submit Answer", PRIMARY_COLOR);
-        mcqSubmit.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        mcqSubmit.addActionListener(e -> {
-            String selected = group.getSelection() != null ? group.getSelection().getActionCommand() : "";
-            if (selected.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please select an answer!", "Selection Required", 
-                    JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            processAnswer(selected);
-        });
+        // Add some spacing
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         
-        optionsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        optionsPanel.add(mcqSubmit);
+        // Example format
+        JLabel exampleLabel = new JLabel("Example: Type 'A' for the first option, 'B' for the second, etc.");
+        exampleLabel.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+        exampleLabel.setForeground(new Color(150, 150, 150));
+        optionsPanel.add(exampleLabel);
     }
     
     private void showTrueFalse(TrueFalseQuestion tfq) {
@@ -567,7 +569,16 @@ public class ClimateQuizGUI extends JFrame {
         
         // Clear options panel and show instructions
         optionsPanel.removeAll();
-        JLabel instructionLabel = new JLabel("Type 'T' for True or 'F' for False (or 'True'/'False')");
+        
+        // Show question type
+        JLabel typeLabel = new JLabel("TRUE/FALSE QUESTION");
+        typeLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        typeLabel.setForeground(PRIMARY_COLOR);
+        optionsPanel.add(typeLabel);
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Show instructions
+        JLabel instructionLabel = new JLabel("Type 'T' for True or 'F' for False (or 'True'/'False') in the text box below:");
         instructionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         instructionLabel.setForeground(new Color(100, 100, 100));
         optionsPanel.add(instructionLabel);
@@ -590,31 +601,28 @@ public class ClimateQuizGUI extends JFrame {
         
         // Clear options panel
         optionsPanel.removeAll();
-        JLabel hintLabel = new JLabel("Type your answer in the box below:");
-        hintLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        hintLabel.setForeground(new Color(100, 100, 100));
+        
+        // Show question type
+        JLabel typeLabel = new JLabel("FILL IN THE BLANK QUESTION");
+        typeLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        typeLabel.setForeground(PRIMARY_COLOR);
+        optionsPanel.add(typeLabel);
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Show instructions
+        JLabel instructionLabel = new JLabel("Type your answer in the text box below:");
+        instructionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        instructionLabel.setForeground(new Color(100, 100, 100));
+        optionsPanel.add(instructionLabel);
+        
+        // Add some spacing
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Hint about case sensitivity
+        JLabel hintLabel = new JLabel("Note: Answers are not case sensitive (typing is not important)");
+        hintLabel.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+        hintLabel.setForeground(new Color(150, 150, 150));
         optionsPanel.add(hintLabel);
-    }
-    
-    private Image createCircleIcon(boolean selected) {
-        int size = 20;
-        java.awt.image.BufferedImage image = new java.awt.image.BufferedImage(
-            size, size, java.awt.image.BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = image.createGraphics();
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        
-        if (selected) {
-            g2d.setColor(PRIMARY_COLOR);
-            g2d.fillOval(2, 2, size-4, size-4);
-            g2d.setColor(Color.WHITE);
-            g2d.fillOval(6, 6, size-12, size-12);
-        } else {
-            g2d.setColor(new Color(200, 200, 200));
-            g2d.drawOval(2, 2, size-4, size-4);
-        }
-        
-        g2d.dispose();
-        return image;
     }
     
     private void updateProgressIndicators() {
@@ -631,10 +639,7 @@ public class ClimateQuizGUI extends JFrame {
     }
     
     private void submitAnswer() {
-        processAnswer(answerField.getText().trim());
-    }
-    
-    private void processAnswer(String answer) {
+        String answer = answerField.getText().trim();
         if (answer.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter an answer!", "Input Required", 
                 JOptionPane.WARNING_MESSAGE);
