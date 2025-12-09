@@ -1,4 +1,10 @@
-public abstract class Question {         // This class is to serve as the basis for all question-related classes
+/**
+ * Abstract class for all types of quiz questions.
+ * Subclasses like MultipleChoiceQuestion, TrueFalseQuestion, and
+ * FillInTheBlankQuestion will inherit from this class and provide their own
+ * implementation of the checkAnswer() method.
+ */
+public abstract class Question {
     private String questionText;
     private Difficulty difficultyLevel;
     private String explanation;
