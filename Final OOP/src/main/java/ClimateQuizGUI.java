@@ -42,11 +42,6 @@ public class ClimateQuizGUI extends JFrame {
     private JTextArea resultsArea;
     private JButton restartButton;
     
-    // For True/False questions
-    private ButtonGroup trueFalseGroup;
-    private JRadioButton trueButton;
-    private JRadioButton falseButton;
-    
     public ClimateQuizGUI() {
         super("Climate Change Quiz - Ghana Focus");
         initializeComponents();
@@ -159,7 +154,7 @@ public class ClimateQuizGUI extends JFrame {
             "• Answer 15 questions on climate change in Ghana\n" +
             "• Difficulty adapts based on your performance\n" +
             "• Multiple Choice: Select from A, B, C, or D\n" +
-            "• True/False: Choose True or False\n" +
+            "• True/False: Enter T or F (or True/False)\n" +
             "• Fill in Blank: Type your answer\n" +
             "• Get detailed explanations after each question\n" +
             "• Track your progress with the progress bar\n" +
@@ -251,7 +246,7 @@ public class ClimateQuizGUI extends JFrame {
         optionsPanel.setOpaque(false);
         optionsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
-        // Input area (for fill-in questions)
+        // Input area (for fill-in and true/false questions)
         JPanel inputPanel = new JPanel(new BorderLayout(10, 10));
         inputPanel.setOpaque(false);
         inputPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -461,7 +456,7 @@ public class ClimateQuizGUI extends JFrame {
         QuestionBank questionBank = new QuestionBank();
         questionBank.loadDefaultQuestionsGhanaFocused();
         
-        // Use 15 questions (you can change this number)
+        // Use 15 questions
         int totalQuestions = 15;
         quizSession = new QuizSession(currentUser, questionBank, totalQuestions);
         
@@ -565,72 +560,26 @@ public class ClimateQuizGUI extends JFrame {
     }
     
     private void showTrueFalse(TrueFalseQuestion tfq) {
-        answerField.setVisible(false);
-        submitButton.setVisible(false);
+        answerField.setVisible(true);
+        submitButton.setVisible(true);
+        answerField.setText("");
+        answerField.setToolTipText("Enter T or F (or True/False)");
         
+        // Clear options panel and show instructions
         optionsPanel.removeAll();
+        JLabel instructionLabel = new JLabel("Type 'T' for True or 'F' for False (or 'True'/'False')");
+        instructionLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        instructionLabel.setForeground(new Color(100, 100, 100));
+        optionsPanel.add(instructionLabel);
         
-        // Create True/False radio buttons
-        trueFalseGroup = new ButtonGroup();
+        // Add some spacing
+        optionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         
-        JPanel tfPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
-        tfPanel.setOpaque(false);
-        
-        trueButton = new JRadioButton("<html><b>TRUE</b></html>");
-        styleTrueFalseButton(trueButton, CORRECT_COLOR);
-        trueButton.setActionCommand("T");
-        
-        falseButton = new JRadioButton("<html><b>FALSE</b></html>");
-        styleTrueFalseButton(falseButton, ACCENT_COLOR);
-        falseButton.setActionCommand("F");
-        
-        trueFalseGroup.add(trueButton);
-        trueFalseGroup.add(falseButton);
-        
-        tfPanel.add(trueButton);
-        tfPanel.add(falseButton);
-        
-        optionsPanel.add(tfPanel);
-        
-        // Add submit button
-        JButton tfSubmit = createStyledButton("Submit Answer", PRIMARY_COLOR);
-        tfSubmit.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        tfSubmit.addActionListener(e -> {
-            String selected = trueFalseGroup.getSelection() != null ? 
-                trueFalseGroup.getSelection().getActionCommand() : "";
-            if (selected.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please select True or False!", "Selection Required", 
-                    JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            processAnswer(selected);
-        });
-        
-        optionsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        optionsPanel.add(tfSubmit);
-    }
-    
-    private void styleTrueFalseButton(JRadioButton button, Color color) {
-        button.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        button.setOpaque(true);
-        button.setBackground(color);
-        button.setForeground(Color.WHITE);
-        button.setBorder(BorderFactory.createEmptyBorder(15, 30, 15, 30));
-        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        button.setFocusPainted(false);
-        
-        // Add hover effect
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(color.darker());
-            }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(color);
-            }
-        });
+        // Example format
+        JLabel exampleLabel = new JLabel("Example: T, F, True, False");
+        exampleLabel.setFont(new Font("Segoe UI", Font.ITALIC, 12));
+        exampleLabel.setForeground(new Color(150, 150, 150));
+        optionsPanel.add(exampleLabel);
     }
     
     private void showFillInTheBlank(FillInTheBlankQuestion fib) {
