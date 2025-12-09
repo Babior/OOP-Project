@@ -48,7 +48,7 @@ public class User {
         // For now, do nothing so it compiles and runs.
     }
 
-    // Optional helper if you want later
+    
     private void increaseDifficulty() {
         if (currentDifficulty == Difficulty.EASY) {
             currentDifficulty = Difficulty.MEDIUM;
