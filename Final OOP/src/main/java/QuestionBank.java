@@ -52,12 +52,8 @@ public class QuestionBank {
     }
 
     public void loadDefaultQuestionsGhanaFocused() {
-        // ========================================================
-        // SECTION 1: MULTIPLE-CHOICE QUESTIONS (15)
-        // ========================================================
-
-        // ---------- From Ghana NDC (GHANA_CLIMATE_POLICY) ----------
-        {
+       
+        {//mcp
             List<String> o = new ArrayList<>();
             o.add("12%");
             o.add("5%");
@@ -87,7 +83,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- From Ghana Adaptation Strategy (GHANA_CLIMATE_POLICY) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("Agriculture, water, and coastal zones");
@@ -118,7 +114,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- From GHG Inventory (GHANA_CLIMATE_POLICY) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("AFOLU");
@@ -149,7 +145,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- Climate Risk Profile (GHANA_CLIMATE_IMPACTS) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("Northern Ghana");
@@ -180,7 +176,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- Coastal Erosion (GHANA_CLIMATE_IMPACTS) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("Keta");
@@ -211,7 +207,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- Ghana Energy Statistics (GHANA_CLIMATE_POLICY) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("Akosombo Dam");
@@ -257,7 +253,7 @@ public class QuestionBank {
             ));
         }
 
-        // ---------- NASA Climate Basics (BASICS_CLIMATE_CONCEPTS) ----------
+        
         {
             List<String> o = new ArrayList<>();
             o.add("CO₂ traps heat in the atmosphere");
@@ -289,11 +285,7 @@ public class QuestionBank {
         }
 
 
-        // ========================================================
-        // SECTION 2: TRUE OR FALSE QUESTIONS (15)
-        // ========================================================
-
-        // ---------- Ghana NDC ----------
+        //truefalse
         addQuestion(new TrueFalseQuestion(
                 "16. Ghana’s NDC includes both mitigation and adaptation actions.",
                 Difficulty.EASY,
@@ -310,7 +302,7 @@ public class QuestionBank {
                 false
         ));
 
-        // ---------- Adaptation Strategy ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "18. Agriculture is one of the most climate-vulnerable sectors in Ghana.",
                 Difficulty.EASY,
@@ -327,7 +319,7 @@ public class QuestionBank {
                 false
         ));
 
-        // ---------- GHG Inventory ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "20. Livestock emissions contribute significantly to methane emissions in Ghana.",
                 Difficulty.MEDIUM,
@@ -344,7 +336,7 @@ public class QuestionBank {
                 false
         ));
 
-        // ---------- Climate Risk Profile ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "22. Average temperatures in Ghana are projected to continue rising.",
                 Difficulty.EASY,
@@ -361,7 +353,7 @@ public class QuestionBank {
                 true
         ));
 
-        // ---------- Coastal Erosion ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "24. Sea-level rise has destroyed homes and schools along sections of Ghana’s coastline.",
                 Difficulty.MEDIUM,
@@ -378,7 +370,7 @@ public class QuestionBank {
                 false
         ));
 
-        // ---------- Ghana Energy Statistics ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "26. Ghana generates electricity from both hydropower and thermal sources.",
                 Difficulty.EASY,
@@ -395,7 +387,7 @@ public class QuestionBank {
                 true
         ));
 
-        // ---------- NASA Climate Basics ----------
+        
         addQuestion(new TrueFalseQuestion(
                 "28. CO₂ is the main gas responsible for trapping heat in the atmosphere.",
                 Difficulty.MEDIUM,
@@ -421,11 +413,7 @@ public class QuestionBank {
         ));
 
 
-        // ========================================================
-        // SECTION 3: FILL-IN-THE-BLANK QUESTIONS (15)
-        // ========================================================
-
-        // ---------- Ghana NDC ----------
+       //fill in blank
         addQuestion(new FillInTheBlankQuestion(
                 "31. Ghana’s climate pledge under the Paris Agreement is called its ______.",
                 Difficulty.EASY,
@@ -442,7 +430,7 @@ public class QuestionBank {
                 "renewable"
         ));
 
-        // ---------- Adaptation Strategy ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "33. Reducing the negative effects of climate impacts is called climate ______.",
                 Difficulty.EASY,
@@ -459,7 +447,7 @@ public class QuestionBank {
                 "drainage"
         ));
 
-        // ---------- GHG Inventory ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "35. Greenhouse gas emissions are measured in ______-equivalent.",
                 Difficulty.MEDIUM,
@@ -476,7 +464,7 @@ public class QuestionBank {
                 "sequestration"
         ));
 
-        // ---------- Climate Risk Profile ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "37. Greater temperature extremes increase climate ______ for vulnerable communities.",
                 Difficulty.MEDIUM,
@@ -493,7 +481,7 @@ public class QuestionBank {
                 "variability"
         ));
 
-        // ---------- Coastal Erosion ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "39. Many households along the Volta Region have been forced to ______ due to sea-level rise.",
                 Difficulty.MEDIUM,
@@ -510,7 +498,7 @@ public class QuestionBank {
                 "erosion"
         ));
 
-        // ---------- Ghana Energy Statistics ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "41. The Akosombo Dam generates significant ______ power for Ghana.",
                 Difficulty.EASY,
@@ -527,7 +515,7 @@ public class QuestionBank {
                 "efficiency"
         ));
 
-        // ---------- NASA Climate Basics ----------
+        
         addQuestion(new FillInTheBlankQuestion(
                 "43. The long-term warming of Earth due to greenhouse gases is known as global ______.",
                 Difficulty.EASY,
