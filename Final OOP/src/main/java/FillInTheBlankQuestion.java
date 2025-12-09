@@ -16,7 +16,7 @@ public class FillInTheBlankQuestion extends Question{
 
     @Override
     public boolean checkAnswer(String userAnswer) {
-        if  (userAnswer == null | correctAnswer == null) {
+        if  (userAnswer == null || correctAnswer == null) {
             return false;
         }
             String user_answer = userAnswer.trim().toLowerCase();

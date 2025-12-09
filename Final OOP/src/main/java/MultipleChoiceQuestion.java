@@ -23,7 +23,7 @@ public class MultipleChoiceQuestion extends Question {
     public boolean checkAnswer(String userAnswer) {
         // TODO: Convert userAnswer (A/B/C/D or 1/2/3/4) to index and compare
         int index = 0;
-        if (userAnswer == null | userAnswer.isEmpty()) {
+        if (userAnswer == null || userAnswer.isEmpty()) {
             return false;
             char letter = Character.toUpperCase(userAnswer.charAt(0));
             index = letter - 'A';
